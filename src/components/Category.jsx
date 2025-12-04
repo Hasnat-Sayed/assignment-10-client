@@ -4,7 +4,7 @@ const Category = () => {
     return (
         <div className='container mx-auto mt-16 mb-16 px-4 lg:px-20'>
             <div className="text-center mb-12">
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">Categories</h3>
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-base-content">Shop by <span className='text-primary'>Categories</span></h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
