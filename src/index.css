@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+@import "animate.css";
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.menu a.active {
+  @apply text-primary underline font-semibold underline-offset-3;
+}
