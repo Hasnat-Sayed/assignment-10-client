@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { AiOutlinePicture } from 'react-icons/ai';
 import { FiCalendar } from 'react-icons/fi';
@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 
 const AddListing = () => {
     const { user } = useContext(AuthContext);
+    const [price, setPrice] = useState("");
+    const [category, setCategory] = useState("");
 
 
 
@@ -41,8 +43,22 @@ const AddListing = () => {
             .then(res => {
                 console.log(res);
                 toast.success("New Listing added Successfully")
+                form.reset();
+                setPrice("");
+                setCategory("")
             })
 
+    };
+
+    const handleCategoryChange = (e) => {
+        const value = e.target.value;
+        setCategory(value);
+
+        if (value === "Pets") {
+            setPrice(0);
+        } else {
+            setPrice("");
+        }
     };
 
 
@@ -72,6 +88,9 @@ const AddListing = () => {
                         <select
                             name="category"
                             className="select select-bordered w-full rounded-xl bg-base-200"
+                            value={category}
+                            onChange={handleCategoryChange}
+                            required
                         >
                             <option value="">Select Category</option>
                             <option value="Pets">Pets</option>
@@ -86,9 +105,11 @@ const AddListing = () => {
                         <input
                             type="number"
                             name="price"
-                            // value={form.category === "Pets" ? 0 : form.price}
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
                             className="input input-bordered w-full rounded-xl bg-base-200"
                             placeholder="Price"
+                            readOnly={category === "Pets"}
 
                         />
                     </div>

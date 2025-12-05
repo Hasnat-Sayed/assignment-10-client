@@ -28,7 +28,7 @@ const Services = () => {
 
 
             <div className='flex justify-end'>
-                <select onChange={(e) =>setCategory(e.target.value)} defaultValue="Filter by category" className="select mb-8">
+                <select onChange={(e) =>setCategory(e.target.value)} defaultValue="Filter by category" className="select mb-8 rounded-2xl">
                     <option disabled={true}>Filter by category</option>
                     <option value="">All Categories</option>
                     <option value="Pets">Pets</option>

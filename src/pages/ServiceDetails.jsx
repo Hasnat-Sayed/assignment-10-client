@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaCalendarDays, FaLocationDot } from 'react-icons/fa6';
 import { IoIosPricetags } from "react-icons/io";
 import { useParams } from 'react-router';
 import Loading from '../components/Loading';
+import { FiCalendar } from 'react-icons/fi';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const ServiceDetails = () => {
+    const { user } = useContext(AuthContext);
     const [service, setService] = useState([]);
     const [loading, setLoading] = useState(true);
     const { id } = useParams()
@@ -18,6 +23,45 @@ const ServiceDetails = () => {
             .catch(err => console.log(err))
     }, [id])
 
+
+    const handleOrder = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const buyerName = form.buyerName.value
+        const buyerEmail = form.buyerEmail.value
+        const productId = form.productId.value
+        const productName = form.productName.value
+        const quantity = parseInt(form.quantity.value) 
+        const price = parseInt(form.price.value) 
+        const address = form.address.value
+        const phone = form.phone.value
+        const date = form.date.value
+        const note = form.note.value
+
+        const formData = {
+            buyerName,
+            buyerEmail,
+            productId,
+            productName,
+            quantity,
+            price,
+            address,
+            phone,
+            date,
+            note,
+        }
+        console.log(formData)
+        axios.post('http://localhost:3000/orders', formData)
+            .then(res => {
+                console.log(res);
+                toast.success("Order placed successfully!");
+                document.getElementById('my_modal_3').close();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
 
 
     return (
@@ -73,8 +117,78 @@ const ServiceDetails = () => {
                             <p className='text-center md:text-left text-accent-content font-medium'>{service?.description}</p>
 
                             <div className='flex  justify-center md:justify-start'>
-                                <button className='btn mt-4 btn-primary mb-0 rounded-xl shadow-xl hover:scale-105 transition duration-200 text-xl py-6 px-18'>Adopt / Order Now</button>
+
+
+                                <button className="btn mt-4 btn-primary mb-0 rounded-xl shadow-xl hover:scale-105 transition duration-200 text-xl py-6 px-18" onClick={() => document.getElementById('my_modal_3').showModal()}>Adopt / Order Now</button>
+
+
+                                <dialog id="my_modal_3" className="modal">
+                                    <div className="modal-box bg-base-300 max-h-[700px]">
+                                        <form method="dialog ">
+                                            <button
+                                                type="button"
+                                                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                                onClick={() => document.getElementById('my_modal_3').close()}
+                                            >
+                                                ✕
+                                            </button>
+
+                                        </form>
+
+                                        <form onSubmit={handleOrder} className="fieldset bg-base-300  w-full">
+                                            <legend className="fieldset-legend text-primary font-bold text-3xl">Order Details</legend>
+
+                                            <label className="label text-secondary font-semibold text-base">Buyer Name</label>
+                                            <input type="text" readOnly defaultValue={user?.displayName} className="input w-full rounded-xl" placeholder="Buyer Name" name="buyerName" />
+
+                                            <label className="label text-secondary font-semibold text-base">Buyer Email</label>
+                                            <input type="email" readOnly defaultValue={user?.email} className="input w-full rounded-xl" placeholder="Buyer Email" name="buyerEmail" />
+
+                                            <label className="label text-secondary font-semibold text-base">Product/Listing ID</label>
+                                            <input type="text" readOnly defaultValue={service?._id} className="input w-full rounded-xl" placeholder="Product/Listing ID" name="productId" />
+
+                                            <label className="label text-secondary font-semibold text-base">Product/Listing Name</label>
+                                            <input type="text" readOnly defaultValue={service?.name} className="input w-full rounded-xl" placeholder="Product/Listing Name" name="productName" />
+
+                                            <label className="label text-secondary font-semibold text-base">Quantity</label>
+                                            <input type="number" className="input w-full rounded-xl" placeholder="Quantity" name="quantity" required />
+
+                                            <label className="label text-secondary font-semibold text-base">Price</label>
+                                            <input type="number" readOnly defaultValue={service?.price} className="input w-full rounded-xl" placeholder="Price" name="price" />
+
+                                            <label className="label text-secondary font-semibold text-base">Address</label>
+                                            <input type="text" className="input w-full rounded-xl" placeholder="Address" name="address" required />
+
+                                            <label className="label text-secondary font-semibold text-base">Phone</label>
+                                            <input type="number" className="input w-full rounded-xl" placeholder="Phone Number" name="phone" required />
+
+                                            <label className="abel text-secondary font-semibold text-base">Pick Up Date</label>
+                                            <div className="input input-bordered rounded-xl w-full flex items-center gap-2 bg-base-200">
+                                                <FiCalendar className="text-lg opacity-70" />
+                                                <input
+                                                    type="date"
+                                                    name="date"
+                                                    className="grow"
+                                                    required
+                                                />
+                                            </div>
+
+                                            <label className="abel text-secondary font-semibold text-base">Additional Notes</label>
+                                            <textarea
+                                                name="note"
+                                                className="textarea textarea-bordered w-full rounded-xl bg-base-200"
+                                                type="text"
+                                                placeholder="Write Your notes..."
+
+                                            ></textarea>
+
+                                            <button type="submit" className="btn btn-primary rounded-2xl">Place Order</button>
+                                        </form>
+                                    </div>
+                                </dialog>
+
                             </div>
+
 
 
                         </div>
