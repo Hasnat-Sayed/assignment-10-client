@@ -51,7 +51,7 @@ const AddListing = () => {
             <div className="max-w-2xl mx-auto bg-base-100 py-10 px-10 lg:px-20 rounded-2xl shadow-xl">
                 <div className="text-center mb-10">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-base-content">
-                        Add New <span className="text-primary">Listing</span>
+                        Add <span className="text-primary">New Listing</span>
                     </h1>
                 </div>
 

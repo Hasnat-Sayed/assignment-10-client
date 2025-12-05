@@ -10,6 +10,8 @@ import ServiceDetails from "../pages/ServiceDetails";
 import ForgetPass from "../pages/ForgetPass";
 import ErrorPage from "../pages/ErrorPage";
 import AddListing from "../pages/AddListing";
+import MyListings from "../pages/MyListings";
+import UpdateService from "../pages/UpdateService";
 
 
 const router = createBrowserRouter([
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
             {
                 path: '/add-services',
                 element:<PrivateRoute><AddListing></AddListing></PrivateRoute>
+            },
+            {
+                path: '/my-services',
+                element:<PrivateRoute><MyListings></MyListings></PrivateRoute>
+            },
+            {
+                path: '/update-services/:id',
+                element:<PrivateRoute><UpdateService></UpdateService></PrivateRoute>
             },
             {
                 path:'/myprofile',
