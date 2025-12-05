@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { Link } from 'react-router';
 import Loading from '../components/Loading';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const MyListings = () => {
 
     const [myServices, setMyServices] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext)
+
     useEffect(() => {
         fetch(`http://localhost:3000/my-services?email=${user?.email}`)
             .then(res => res.json())
@@ -18,6 +21,24 @@ const MyListings = () => {
             .catch(err => console.log(err))
     }, [user?.email])
     // console.log(myServices);
+
+
+
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3000/delete/${id}`)
+            .then(res => {
+                console.log(res.data);
+                const filterData = myServices.filter(service => service._id != id)
+                setMyServices(filterData)
+                toast.success("Listing Deleted Successfully")
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
+
+
     return (
         <div className='container bg-base-200 mx-auto pt-10 pb-16 px-4 lg:px-20 min-h-screen'>
             <div className="text-center mb-10">
@@ -64,7 +85,8 @@ const MyListings = () => {
                                             <td><p className='font-bold'>৳{service?.price}</p></td>
                                             <td>
                                                 <div className='flex gap-3'>
-                                                    <button className="btn btn-error btn-sm rounded-lg">Delete</button>
+                                                    <button onClick={() => handleDelete(service?._id)} className="btn btn-error btn-sm rounded-lg">Delete</button>
+
                                                     <Link to={`/update-services/${service?._id}`}><button className="btn btn-accent btn-sm rounded-lg">Update</button></Link>
 
                                                 </div>

@@ -55,9 +55,9 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center mx-4 my-5 min-h-screen items-center ">
-            <div className="card bg-base-200 border border-gray-200  w-full max-w-xl shrink-0 shadow-2xl pt-10 pb-3">
-                <h2 className="font-semibold text-4xl text-center pb-7 mx-10 border-primary text-primary border-b-4">
+        <div className="flex justify-center px-4 py-5 min-h-screen items-center bg-base-300">
+            <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl pt-10 pb-3 rounded-2xl">
+                <h2 className="font-semibold text-4xl text-center pb-7 mx-10 border-primary text-primary border-b">
                     Login to Your Account
                 </h2>
                 <form onSubmit={handleSubmit} className="card-body">
@@ -68,7 +68,7 @@ const Login = () => {
                             name="email"
                             type="email"
                             onChange={(e) => setEmail(e.target.value)}
-                            className="input w-full bg-base-100"
+                            className="input w-full bg-base-200"
                             placeholder="Enter Your Email"
                             required
                         />
@@ -78,7 +78,7 @@ const Login = () => {
                             <input
                                 name="password"
                                 type={show ? "text" : "password"}
-                                className="input w-full bg-base-100"
+                                className="input w-full bg-base-200"
                                 placeholder="Enter Your Password"
                                 required
                             />

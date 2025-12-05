@@ -77,9 +77,9 @@ const Register = () => {
     }
 
     return (
-        <div className="flex justify-center mx-4 my-10 items-center min-h-screen">
-            <div className="card bg-base-200 border border-gray-200  w-full max-w-xl shrink-0 shadow-2xl pt-10 pb-3">
-                <h2 className="font-semibold text-4xl text-center pb-7 mx-10 border-primary text-primary border-b-4">
+        <div className="bg-base-300 flex justify-center px-4 py-10 items-center min-h-screen">
+            <div className="card bg-base-100  w-full max-w-xl shrink-0 shadow-2xl my-16 pt-10 pb-3 rounded-2xl">
+                <h2 className="font-semibold text-4xl text-center pb-7 mx-10 border-primary text-primary border-b">
                     Register Your Account
                 </h2>
                 <form onSubmit={handleSubmit} className="card-body">
@@ -89,7 +89,7 @@ const Register = () => {
                         <input
                             name="name"
                             type="text"
-                            className="input w-full bg-base-100"
+                            className="input w-full bg-base-200"
                             placeholder="Enter Your Name"
                             required
                         />
@@ -98,7 +98,7 @@ const Register = () => {
                         <input
                             name="photo"
                             type="text"
-                            className="input w-full bg-base-100"
+                            className="input w-full bg-base-200"
                             placeholder="Enter Your Photo URL"
                             required
                         />
@@ -107,7 +107,7 @@ const Register = () => {
                         <input
                             name="email"
                             type="email"
-                            className="input w-full bg-base-100"
+                            className="input w-full bg-base-200"
                             placeholder="Enter Your Email"
                             required
                         />
@@ -117,7 +117,7 @@ const Register = () => {
                             <input
                                 name="password"
                                 type={show ? "text" : "password"}
-                                className="input w-full bg-base-100"
+                                className="input w-full bg-base-200"
                                 placeholder="Enter Your Password"
                                 required
                             />
@@ -137,9 +137,9 @@ const Register = () => {
                         </button>
 
                         <div className="flex items-center justify-center gap-2 my-2">
-                            <div className="h-px w-16 bg-base-300"></div>
+                            <div className="h-px w-16 bg-gray-600"></div>
                             <span className="text-sm">or</span>
-                            <div className="h-px w-16 bg-base-300"></div>
+                            <div className="h-px w-16 bg-gray-600"></div>
                         </div>
 
                         <button type='button' onClick={handleGoogleUp} className="btn btn-secondary">

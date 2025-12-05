@@ -5,6 +5,7 @@ import { FiCalendar } from 'react-icons/fi';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
+import Loading from '../components/Loading';
 
 const UpdateService = () => {
 
@@ -74,113 +75,119 @@ const UpdateService = () => {
                     </h1>
                 </div>
 
-                <form onSubmit={handleUpdate} className="space-y-4">
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Product/Pet Name</label>
-                        <input
-                            defaultValue={service?.name}
-                            type="text"
-                            name="name"
-                            className="input input-bordered w-full rounded-xl bg-base-200"
-                            placeholder="Enter name"
-                            required
-                        />
-                    </div>
+                {
+                    loading ? (<Loading></Loading>) : (
+                        <form onSubmit={handleUpdate} className="space-y-4">
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Product/Pet Name</label>
+                                <input
+                                    defaultValue={service?.name}
+                                    type="text"
+                                    name="name"
+                                    className="input input-bordered w-full rounded-xl bg-base-200"
+                                    placeholder="Enter name"
+                                    required
+                                />
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Category</label>
-                        <select
-                            name="category"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            className="select select-bordered w-full rounded-xl bg-base-200"
-                        >
-                            <option value="">Select Category</option>
-                            <option value="Pets">Pets</option>
-                            <option value="Food">Food</option>
-                            <option value="Accessories">Accessories</option>
-                            <option value="Care Products">Care Products</option>
-                        </select>
-                    </div>
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Category</label>
+                                <select
+                                    name="category"
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                    className="select select-bordered w-full rounded-xl bg-base-200"
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="Pets">Pets</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Accessories">Accessories</option>
+                                    <option value="Care Products">Care Products</option>
+                                </select>
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Price</label>
-                        <input
-                            defaultValue={service?.price}
-                            type="number"
-                            name="price"
-                            // value={form.category === "Pets" ? 0 : form.price}
-                            className="input input-bordered w-full rounded-xl bg-base-200"
-                            placeholder="Price"
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Price</label>
+                                <input
+                                    defaultValue={service?.price}
+                                    type="number"
+                                    name="price"
+                                    // value={form.category === "Pets" ? 0 : form.price}
+                                    className="input input-bordered w-full rounded-xl bg-base-200"
+                                    placeholder="Price"
 
-                        />
-                    </div>
+                                />
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Location</label>
-                        <input
-                            type="text"
-                            defaultValue={service?.location}
-                            name="location"
-                            className="input input-bordered w-full rounded-xl bg-base-200"
-                            placeholder="Dhaka, Bangladesh"
-                            required
-                        />
-                    </div>
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Location</label>
+                                <input
+                                    type="text"
+                                    defaultValue={service?.location}
+                                    name="location"
+                                    className="input input-bordered w-full rounded-xl bg-base-200"
+                                    placeholder="Dhaka, Bangladesh"
+                                    required
+                                />
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Description</label>
-                        <textarea
-                            name="description"
-                            defaultValue={service?.description}
-                            className="textarea textarea-bordered w-full rounded-xl bg-base-200"
-                            placeholder="Write details..."
-                            required
-                        ></textarea>
-                    </div>
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Description</label>
+                                <textarea
+                                    name="description"
+                                    defaultValue={service?.description}
+                                    className="textarea textarea-bordered w-full rounded-xl bg-base-200"
+                                    placeholder="Write details..."
+                                    required
+                                ></textarea>
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Image URL</label>
-                        <div className="input input-bordered rounded-xl flex w-full items-center gap-2 bg-base-200">
-                            <AiOutlinePicture className="text-xl opacity-70" />
-                            <input
-                                type="text"
-                                defaultValue={service?.image}
-                                name="image"
-                                className="grow"
-                                placeholder="https://example.com/photo.jpg"
-                                required
-                            />
-                        </div>
-                    </div>
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Image URL</label>
+                                <div className="input input-bordered rounded-xl flex w-full items-center gap-2 bg-base-200">
+                                    <AiOutlinePicture className="text-xl opacity-70" />
+                                    <input
+                                        type="text"
+                                        defaultValue={service?.image}
+                                        name="image"
+                                        className="grow"
+                                        placeholder="https://example.com/photo.jpg"
+                                        required
+                                    />
+                                </div>
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Pick Up Date</label>
-                        <div className="input input-bordered rounded-xl w-full flex items-center gap-2 bg-base-200">
-                            <FiCalendar className="text-lg opacity-70" />
-                            <input
-                                type="date"
-                                defaultValue={service?.date}
-                                name="date"
-                                className="grow"
-                                required
-                            />
-                        </div>
-                    </div>
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Pick Up Date</label>
+                                <div className="input input-bordered rounded-xl w-full flex items-center gap-2 bg-base-200">
+                                    <FiCalendar className="text-lg opacity-70" />
+                                    <input
+                                        type="date"
+                                        defaultValue={service?.date}
+                                        name="date"
+                                        className="grow"
+                                        required
+                                    />
+                                </div>
+                            </div>
 
-                    <div>
-                        <label className="label text-secondary font-semibold text-xl">Email (Read Only)</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={user?.email}
-                            readOnly
-                            className="input input-bordered w-full bg-base-200 rounded-xl cursor-not-allowed"
-                        />
-                    </div>
+                            <div>
+                                <label className="label text-secondary font-semibold text-xl">Email (Read Only)</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={user?.email}
+                                    readOnly
+                                    className="input input-bordered w-full bg-base-200 rounded-xl cursor-not-allowed"
+                                />
+                            </div>
 
-                    <button className="btn btn-secondary w-full text-lg rounded-xl py-6">Update Listing</button>
-                </form>
+                            <button className="btn btn-secondary w-full text-lg rounded-xl py-6">Update Listing</button>
+                        </form>
+                    )
+                }
+
+
 
             </div>
         </div>

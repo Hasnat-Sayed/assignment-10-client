@@ -41,6 +41,10 @@ const router = createBrowserRouter([
                 element:<PrivateRoute><UpdateService></UpdateService></PrivateRoute>
             },
             {
+                path: '/details/:id',
+                element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
+            },
+            {
                 path:'/myprofile',
                 element:<PrivateRoute><MyProfile></MyProfile></PrivateRoute>
             },
@@ -51,11 +55,7 @@ const router = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
-            },
-            {
-                path: '/details/:id',
-                element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
-            },
+            },         
             {
                 path: '/forget/:email?',
                 element: <ForgetPass></ForgetPass>
