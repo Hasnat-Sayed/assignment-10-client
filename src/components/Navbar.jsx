@@ -22,7 +22,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-300 shadow-xl px-2 lg:px-20">
+        <div className="navbar bg-base-100 backdrop-blur-xl shadow-xl px-2 lg:px-20 border-b border-white/20">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden pl-0 pr-2">
@@ -45,7 +45,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center justify-center gap-1'>
                     <FaPaw className="text-xl text-secondary" />
-                    <p className="font-bold text-2xl px-0 text-primary">PawMart</p>
+                    <p className="text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">PawMart</p>
                 </div>
 
             </div>

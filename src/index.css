@@ -12,5 +12,5 @@
 }
 
 .menu a.active {
-  @apply text-primary underline font-semibold underline-offset-3;
+  @apply text-primary underline font-bold underline-offset-3;
 }
