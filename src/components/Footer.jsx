@@ -18,7 +18,7 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title text-lg">Quick Links</h6>
                     <Link to="/" className="link link-hover">Home</Link>
-                    <Link to="/" className="link link-hover">Pets & Supplies</Link>
+                    <Link to="/all-services" className="link link-hover">Pets & Supplies</Link>
 
                 </nav>
 

@@ -32,7 +32,7 @@ const Navbar = () => {
                         tabIndex="0"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/">Pets & Supplies</NavLink></li>
+                        <li><NavLink to="/all-services">Pets & Supplies</NavLink></li>
                         {
                             user && (<>
                                 <li><NavLink to="/add-services">Add Listing</NavLink></li>
@@ -52,7 +52,7 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/">Pets & Supplies</NavLink></li>
+                    <li><NavLink to="/all-services">Pets & Supplies</NavLink></li>
                     {
                         user && (<>
                             <li><NavLink to="/add-services">Add Listing</NavLink></li>
