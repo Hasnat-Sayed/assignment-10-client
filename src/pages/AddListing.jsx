@@ -34,7 +34,7 @@ const AddListing = () => {
             email,
         }
 
-        console.log(formData);
+        // console.log(formData);
 
         axios.post('http://localhost:3000/services',
             formData)
