@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router";
 import RootLayout from "../root/RootLayout";
 import Home from "../pages/Home";
 import Services from "../pages/Services";
-import MyProfile from "../pages/MyProfile";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -12,6 +11,7 @@ import ErrorPage from "../pages/ErrorPage";
 import AddListing from "../pages/AddListing";
 import MyListings from "../pages/MyListings";
 import UpdateService from "../pages/UpdateService";
+import MyOrders from "../pages/MyOrders";
 
 
 const router = createBrowserRouter([
@@ -37,16 +37,16 @@ const router = createBrowserRouter([
                 element:<PrivateRoute><MyListings></MyListings></PrivateRoute>
             },
             {
+                path: '/my-orders',
+                element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+            },
+            {
                 path: '/update-services/:id',
                 element:<PrivateRoute><UpdateService></UpdateService></PrivateRoute>
             },
             {
                 path: '/details/:id',
                 element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
-            },
-            {
-                path:'/myprofile',
-                element:<PrivateRoute><MyProfile></MyProfile></PrivateRoute>
             },
             {
                 path:'/login',

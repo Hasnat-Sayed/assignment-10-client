@@ -73,13 +73,13 @@ const MyListings = () => {
                                                     </div>
                                                     <div>
                                                         <div className="font-bold">{service?.name}</div>
-                                                        <p className='text-neutral-600'>{service?.description}</p>
+                                                        <p className='text-neutral-700'>{service?.description}</p>
 
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <span className="badge badge-secondary font-semibold">{service?.category}</span>
+                                                <span className="badge badge-soft badge-neutral font-semibold">{service?.category}</span>
                                             </td>
                                             <td><p>{service?.date}</p></td>
                                             <td><p className='font-bold'>৳{service?.price}</p></td>

@@ -37,7 +37,7 @@ const Navbar = () => {
                             user && (<>
                                 <li><NavLink to="/add-services">Add Listing</NavLink></li>
                                 <li><NavLink to="/my-services">My Listings</NavLink></li>
-                                <li><NavLink to="/">My Orders</NavLink></li>
+                                <li><NavLink to="/my-orders">My Orders</NavLink></li>
                             </>)
                         }
 
@@ -57,7 +57,7 @@ const Navbar = () => {
                         user && (<>
                             <li><NavLink to="/add-services">Add Listing</NavLink></li>
                             <li><NavLink to="/my-services">My Listings</NavLink></li>
-                            <li><NavLink to="/">My Orders</NavLink></li>
+                            <li><NavLink to="/my-orders">My Orders</NavLink></li>
                         </>)
                     }
                 </ul>

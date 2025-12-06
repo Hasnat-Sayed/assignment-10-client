@@ -4,6 +4,7 @@ import { AiOutlinePicture } from 'react-icons/ai';
 import { FiCalendar } from 'react-icons/fi';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const AddListing = () => {
     const { user } = useContext(AuthContext);
@@ -42,7 +43,19 @@ const AddListing = () => {
             formData)
             .then(res => {
                 console.log(res);
-                toast.success("New Listing added Successfully")
+                if (res.data.acknowledged) {
+                    Swal.fire({
+                        title: "Listing Created Successfully!",
+                        icon: "success",
+                        draggable: true
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!"
+                    });
+                }
                 form.reset();
                 setPrice("");
                 setCategory("")
