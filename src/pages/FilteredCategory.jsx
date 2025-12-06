@@ -21,7 +21,7 @@ const FilteredCategory = () => {
             });
     }, [categoryName]);
 
-    console.log(services)
+    // console.log(services)
     return (
         <div className='container bg-base-200 mx-auto pt-16 pb-16 px-4 lg:px-20 min-h-screen'>
             <div className="text-center mb-12">

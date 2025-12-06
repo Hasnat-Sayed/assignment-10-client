@@ -1,15 +1,20 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Loading from '../components/Loading';
+import { AuthContext } from '../provider/AuthProvider';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+
 
 const MyOrders = () => {
 
 
     const [myOrders, setMyOrders] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axios.get('http://localhost:3000/orders')
+        axios.get(`http://localhost:3000/orders?email=${user?.email}`)
             .then(res => {
                 setMyOrders(res.data);
                 setLoading(false)
@@ -17,9 +22,57 @@ const MyOrders = () => {
             .catch(err => {
                 console.log(err);
             })
-    }, [])
+    }, [user?.email])
 
-    console.log(myOrders)
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+
+        doc.setFontSize(18);
+        doc.text("My Orders Report", 14, 20);
+
+        const tableColumn = [
+            "SL",
+            "Product",
+            "Buyer",
+            "Price",
+            "Qty",
+            "Address",
+            "Date",
+            "Phone"
+        ];
+
+        const tableRows = [];
+
+        myOrders.forEach((order, index) => {
+            const row = [
+                index + 1,
+                order.productName,
+                order.buyerName,
+                order.price,
+                order.quantity,
+                order.address,
+                order.date,
+                order.phone,
+            ];
+            tableRows.push(row);
+        });
+
+        autoTable(doc, {
+            startY: 30,
+            head: [tableColumn],
+            body: tableRows,
+            styles: { fontSize: 9 },
+            headStyles: {
+                fillColor: [26, 115, 232],
+                textColor: [255, 255, 255],
+            },
+        });
+
+        doc.save("my_orders.pdf");
+    };
+
+
+    // console.log(myOrders)
     return (
         <div className='container bg-base-200 mx-auto pt-10 pb-16 px-4 lg:px-20 min-h-screen'>
             <div className="text-center mb-10">
@@ -46,7 +99,7 @@ const MyOrders = () => {
                             <tbody>
                                 {
                                     myOrders.map((order, index) =>
-                                        <tr className='text-base'>
+                                        <tr key={index} className='text-base'>
                                             <th>{index + 1}</th>
                                             <td>{order?.productName}</td>
                                             <td>{order?.buyerName}</td>
@@ -63,9 +116,20 @@ const MyOrders = () => {
                             </tbody>
 
                         </table>
+
                     </div>
                 )
             }
+            <div className='flex items-center justify-center pt-10'>
+                <button
+                    onClick={downloadPDF}
+                    className="btn btn-lg rounded-2xl btn-primary"
+                >
+                    Download Report PDF
+                </button>
+            </div>
+
+
 
         </div>
     );

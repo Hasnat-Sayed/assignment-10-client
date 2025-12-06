@@ -19,6 +19,22 @@ const Services = () => {
             .finally(() => setLoading(false))
 
     }, [category])
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const search = e.target.search.value;
+        console.log(search)
+        setLoading(true)
+        fetch(`http://localhost:3000/search?search=${search}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setServices(data)
+                setLoading(false)
+            })
+    }
+
+
     return (
         <div className='container bg-base-200 mx-auto pt-8 pb-16 px-4 lg:px-20 min-h-screen'>
             <div className="text-center mb-4">
@@ -26,8 +42,32 @@ const Services = () => {
             </div>
 
 
-            <div className='flex justify-end'>
-                <select onChange={(e) =>setCategory(e.target.value)} defaultValue="Filter by category" className="select mb-8 rounded-2xl">
+
+
+            <div className='flex flex-col md:flex-row justify-center items-center gap-5 md:justify-between mb-8'>
+
+                <form onSubmit={handleSearch}>
+                    <label className="input rounded-2xl bg-base-100">
+                        <svg className="h-[1em] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g
+                                strokeLinejoin="round"
+                                strokeLinecap="round"
+                                strokeWidth="2.5"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input name="search" type="search" placeholder="Search" />
+                    </label>
+
+                </form>
+
+
+
+                <select onChange={(e) => setCategory(e.target.value)} defaultValue="Filter by category" className="select rounded-2xl">
                     <option disabled={true}>Filter by category</option>
                     <option value="">All Categories</option>
                     <option value="Pets">Pets</option>
@@ -38,15 +78,17 @@ const Services = () => {
             </div>
 
 
+
+
             {
                 loading ? (<Loading></Loading>) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {
                             services.map(service => (
-                                <motion.div initial={{ scale: 0.9 }} animate={{
+                                <motion.div initial={{ scale: 0.85 }} animate={{
                                     scale: 1,
-                                    transition: { duration: 0.2 }
-                                }} key={service.serviceId} className="card bg-base-100 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-2xl">
+                                    transition: { duration: 0.1 }
+                                }} key={service?._id} className="card bg-base-100 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-2xl">
                                     <figure>
                                         <img
                                             src={service?.image}

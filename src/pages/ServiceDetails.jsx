@@ -5,8 +5,8 @@ import { useParams } from 'react-router';
 import Loading from '../components/Loading';
 import { FiCalendar } from 'react-icons/fi';
 import { AuthContext } from '../provider/AuthProvider';
-import { toast } from 'react-toastify';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
@@ -31,8 +31,8 @@ const ServiceDetails = () => {
         const buyerEmail = form.buyerEmail.value
         const productId = form.productId.value
         const productName = form.productName.value
-        const quantity = parseInt(form.quantity.value) 
-        const price = parseInt(form.price.value) 
+        const quantity = service?.category === "Pets" ? 1 : parseInt(form.quantity.value);
+        const price = parseInt(form.price.value)
         const address = form.address.value
         const phone = form.phone.value
         const date = form.date.value
@@ -50,11 +50,15 @@ const ServiceDetails = () => {
             date,
             note,
         }
-        console.log(formData)
+        // console.log(formData)
         axios.post('http://localhost:3000/orders', formData)
             .then(res => {
                 console.log(res);
-                toast.success("Order placed successfully!");
+                Swal.fire({
+                    title: "Order placed successfully!",
+                    icon: "success",
+                    draggable: true
+                });
                 document.getElementById('my_modal_3').close();
             })
             .catch(err => {
@@ -151,7 +155,24 @@ const ServiceDetails = () => {
                                             <input type="text" readOnly defaultValue={service?.name} className="input w-full rounded-xl" placeholder="Product/Listing Name" name="productName" />
 
                                             <label className="label text-secondary font-semibold text-base">Quantity</label>
-                                            <input type="number" className="input w-full rounded-xl" placeholder="Quantity" name="quantity" required />
+                                            {service?.category === "Pets" ? (
+                                                <input
+                                                    type="number"
+                                                    name="quantity"
+                                                    value={1}
+                                                    readOnly
+                                                    className="input w-full rounded-xl"
+                                                />
+                                            ) : (
+                                                <input
+                                                    type="number"
+                                                    name="quantity"
+                                                    required
+                                                    className="input w-full rounded-xl"
+                                                    placeholder="Quantity"
+                                                />
+                                            )}
+                                            {/* <input type="number" className="input w-full rounded-xl" placeholder="Quantity" name="quantity" required /> */}
 
                                             <label className="label text-secondary font-semibold text-base">Price</label>
                                             <input type="number" readOnly defaultValue={service?.price} className="input w-full rounded-xl" placeholder="Price" name="price" />

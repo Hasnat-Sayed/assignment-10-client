@@ -10,7 +10,7 @@ const Footer = () => {
                 <aside className='max-w-sm'>
                     <FaPaw className="text-4xl text-secondary" />
 
-                    <p className='font-bold text-primary text-3xl'>
+                    <p className='font-bold tracking-wide bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary text-3xl'>
                         PawMart
                     </p>
                     <p className='opacity-70'>“PawMart connects local pet owners and buyers for adoption and pet care products.”</p>

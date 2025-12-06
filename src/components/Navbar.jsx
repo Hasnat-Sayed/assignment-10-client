@@ -14,7 +14,7 @@ const Navbar = () => {
     const handleThemeChange = () => {
         setIsChecked(prev => !prev);
     };
-    
+
     useEffect(() => {
         const theme = isChecked ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", theme);
@@ -104,7 +104,7 @@ const Navbar = () => {
 
                     {user && (
                         <>
-                            <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                            <div>
                                 <img
                                     src={user?.photoURL}
                                     className="w-10 h-10 rounded-full object-cover ring-2 ring-primary cursor-pointer"

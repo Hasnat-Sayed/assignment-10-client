@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Typewriter } from 'react-simple-typewriter'
 
 const Category = () => {
     const categories = [
@@ -29,13 +30,24 @@ const Category = () => {
         <div className='container mx-auto mt-16 mb-16 px-4 lg:px-20'>
             <div className="text-center mb-12">
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-base-content">
-                    Browse by <span className='text-primary'>Categories</span>
+                    Browse {' '}
+                    <span className="text-primary">
+                        <Typewriter
+                            words={['Pets', 'Foods', 'Accessories', 'Care Products']}
+                            loop={false}
+                            cursor
+                            cursorStyle="_"
+                            typeSpeed={80}
+                            deleteSpeed={60}
+                            delaySpeed={1500}
+                        />
+                    </span>
                 </h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {categories.map((category, index) => (
-                    <Link 
+                    <Link
                         key={index}
                         to={`/category/${category.name}`}
                         className="card bg-base-100 image-full w-full shadow-sm hover:scale-105 transition-all transform duration-300 cursor-pointer "
