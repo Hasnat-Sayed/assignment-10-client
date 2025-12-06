@@ -54,7 +54,7 @@ const MeetHeros = () => {
                         {heroes.map((hero, index) => (
                             <div
                                 key={index}
-                                className="bg-linear-to-b from-primary/30 to-base-100 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2"
+                                className="bg-linear-to-b from-primary/30 to-base-100 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:-translate-y-2 hover:shadow-primary/40"
                             >
                                 <div className="h-60 overflow-hidden">
                                     <img

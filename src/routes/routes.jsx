@@ -12,6 +12,7 @@ import AddListing from "../pages/AddListing";
 import MyListings from "../pages/MyListings";
 import UpdateService from "../pages/UpdateService";
 import MyOrders from "../pages/MyOrders";
+import FilteredCategory from "../pages/FilteredCategory";
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: '/details/:id',
                 element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
+            },
+            {
+                path: '/category/:categoryName',
+                element:<FilteredCategory></FilteredCategory>
             },
             {
                 path:'/login',
