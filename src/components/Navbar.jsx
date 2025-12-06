@@ -33,7 +33,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 backdrop-blur-xl shadow-xl px-2 lg:px-20 border-b border-white/20">
+        <div className="navbar bg-base-100 backdrop-blur-xl shadow-xl px-2 lg:px-20 border-b border-white/20  z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden pl-0 pr-2">
@@ -77,7 +77,7 @@ const Navbar = () => {
             {
                 loading ? (<div className="navbar-end flex gap-3">
                     <span className="loading loading-spinner loading-xl"></span>
-                </div>) : (<div className="navbar-end flex items-center gap-1 sm:gap-2 md:gap-3">
+                </div>) : (<div className="navbar-end flex items-center gap-2 md:gap-3">
                     {/*theme*/}
                     <label className="swap swap-rotate">
                         {/* this hidden checkbox controls the state */}
@@ -107,7 +107,7 @@ const Navbar = () => {
                             <div>
                                 <img
                                     src={user?.photoURL}
-                                    className="w-10 h-10 rounded-full object-cover ring-2 ring-primary cursor-pointer"
+                                    className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover ring-2 ring-primary cursor-pointer"
                                     alt={user?.displayName}
                                     referrerPolicy="no-referrer"
                                 />
