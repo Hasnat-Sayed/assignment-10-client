@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
 import Loading from '../components/Loading';
 import { Link } from 'react-router';
 import { motion } from "motion/react"

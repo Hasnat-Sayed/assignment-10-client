@@ -34,6 +34,7 @@ const AddListing = () => {
             image,
             date,
             email,
+            created_at: new Date(),
         }
 
         // console.log(formData);

@@ -4,15 +4,17 @@ import PopularServices from '../components/PopularServices';
 import WhyAdopt from '../components/WhyAdopt';
 import MeetHeros from '../components/MeetHeros';
 import Category from '../components/Category';
+import Recent6 from '../components/Recent6';
 
 const Home = () => {
     return (
         <div>
             <Slider></Slider>
-            {/* <PopularServices></PopularServices> */}
             <Category></Category>
+            <Recent6></Recent6>
             <WhyAdopt></WhyAdopt>
             <MeetHeros></MeetHeros>
+            
         </div>
     );
 };
