@@ -8,7 +8,7 @@ const Recent6 = () => {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:3000/latest`)
+        fetch(`https://pawmart-pi.vercel.app/latest`)
             .then(res => res.json())
             .then(data => {
                 setServices(data);

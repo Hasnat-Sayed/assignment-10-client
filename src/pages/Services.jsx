@@ -12,7 +12,7 @@ const Services = () => {
     const [category, setCategory] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:3000/services?category=${category}`)
+        fetch(`https://pawmart-pi.vercel.app/services?category=${category}`)
             .then(res => res.json())
             .then(data => setServices(data))
             .catch(err => console.log(err))
@@ -25,7 +25,7 @@ const Services = () => {
         const search = e.target.search.value;
         console.log(search)
         setLoading(true)
-        fetch(`http://localhost:3000/search?search=${search}`)
+        fetch(`https://pawmart-pi.vercel.app/search?search=${search}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

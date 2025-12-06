@@ -9,7 +9,7 @@ const FilteredCategory = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/category?category=${categoryName}`)
+        fetch(`https://pawmart-pi.vercel.app/category?category=${categoryName}`)
             .then(res => res.json())
             .then(data => {
                 setServices(data);

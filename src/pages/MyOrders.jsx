@@ -14,7 +14,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/orders?email=${user?.email}`)
+        axios.get(`https://pawmart-pi.vercel.app/orders?email=${user?.email}`)
             .then(res => {
                 setMyOrders(res.data);
                 setLoading(false)

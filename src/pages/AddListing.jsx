@@ -39,7 +39,7 @@ const AddListing = () => {
 
         // console.log(formData);
 
-        axios.post('http://localhost:3000/services',
+        axios.post('https://pawmart-pi.vercel.app/services',
             formData)
             .then(res => {
                 console.log(res);

@@ -20,7 +20,7 @@ const UpdateService = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/services/${id}`)
+        axios.get(`https://pawmart-pi.vercel.app/services/${id}`)
             .then(res => {
                 setService(res.data)
                 setLoading(false)
@@ -54,7 +54,7 @@ const UpdateService = () => {
         }
         // console.log(formData)
 
-        axios.put(`http://localhost:3000/update/${id}`, formData)
+        axios.put(`https://pawmart-pi.vercel.app/update/${id}`, formData)
             .then(res => {
                 console.log(res.data);
                 Swal.fire({

@@ -14,7 +14,7 @@ const ServiceDetails = () => {
     const [loading, setLoading] = useState(true);
     const { id } = useParams()
     useEffect(() => {
-        fetch(`http://localhost:3000/services/${id}`)
+        fetch(`https://pawmart-pi.vercel.app/services/${id}`)
             .then(res => res.json())
             .then(data => {
                 setService(data);
@@ -51,7 +51,7 @@ const ServiceDetails = () => {
             note,
         }
         // console.log(formData)
-        axios.post('http://localhost:3000/orders', formData)
+        axios.post('https://pawmart-pi.vercel.app/orders', formData)
             .then(res => {
                 console.log(res);
                 Swal.fire({

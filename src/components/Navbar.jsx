@@ -55,8 +55,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='flex items-center justify-center gap-1'>
-                    <FaPaw className="text-xl text-secondary" />
-                    <p className="text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">PawMart</p>
+                    <FaPaw className="text-lg md:text-xl text-secondary" />
+                    <p className="text-xl md:text-2xl font-bold tracking-wide bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary">PawMart</p>
                 </div>
 
             </div>
@@ -77,7 +77,7 @@ const Navbar = () => {
             {
                 loading ? (<div className="navbar-end flex gap-3">
                     <span className="loading loading-spinner loading-xl"></span>
-                </div>) : (<div className="navbar-end flex items-center gap-3">
+                </div>) : (<div className="navbar-end flex items-center gap-1 sm:gap-2 md:gap-3">
                     {/*theme*/}
                     <label className="swap swap-rotate">
                         {/* this hidden checkbox controls the state */}
@@ -85,7 +85,7 @@ const Navbar = () => {
 
                         {/* sun icon */}
                         <svg
-                            className="swap-off h-10 w-10 fill-current"
+                            className="swap-off h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 fill-current"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path
@@ -94,7 +94,7 @@ const Navbar = () => {
 
                         {/* moon icon */}
                         <svg
-                            className="swap-on h-10 w-10 fill-current"
+                            className="swap-on h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 fill-current"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path
@@ -113,7 +113,7 @@ const Navbar = () => {
                                 />
                             </div>
 
-                            <button onClick={handleSignOut} className="btn btn-primary rounded-full">
+                            <button onClick={handleSignOut} className="btn btn-sm md:btn-md btn-primary rounded-full">
                                 Logout
                             </button>
                         </>
@@ -121,8 +121,8 @@ const Navbar = () => {
 
                     {!user && (
                         <>
-                            <Link to="/login" className="btn btn-primary rounded-full">Login</Link>
-                            <Link to="/register" className="btn btn-secondary rounded-full">Register</Link>
+                            <Link to="/login" className="btn btn-sm md:btn-md btn-primary rounded-full">Login</Link>
+                            <Link to="/register" className="btn btn-sm md:btn-md btn-secondary rounded-full">Register</Link>
                         </>
                     )}
 
