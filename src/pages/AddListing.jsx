@@ -3,7 +3,6 @@ import { AuthContext } from '../provider/AuthProvider';
 import { AiOutlinePicture } from 'react-icons/ai';
 import { FiCalendar } from 'react-icons/fi';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const AddListing = () => {
@@ -59,6 +58,14 @@ const AddListing = () => {
                 form.reset();
                 setPrice("");
                 setCategory("")
+            })
+            .catch(err => {
+                console.log(err);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!"
+                });
             })
 
     };

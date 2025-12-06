@@ -81,14 +81,14 @@ const MeetHeros = () => {
                                         <p className="text-md font-semibold text-secondary">
                                             With {hero.petName}
                                         </p>
-                                        <p className="text-sm text-gray-500">
+                                        <p className="text-sm text-base-content/70">
                                             {hero.adoptedDate}
                                         </p>
                                     </div>
 
                                     <div className="relative">
                                         <FaQuoteLeft className="text-md text-accent absolute -top-1 -left-1" />
-                                        <p className="text-gray-600 text-sm leading-relaxed pl-4 italic">
+                                        <p className="text-base-content/70 text-sm leading-relaxed pl-4 italic">
                                             {hero.story}
                                         </p>
 

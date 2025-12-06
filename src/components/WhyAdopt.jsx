@@ -55,7 +55,7 @@ const WhyAdopt = () => {
                                 <p className="text-xl font-bold text-secondary">
                                     {tip.title}
                                 </p>
-                                <p className="text-gray-600">
+                                <p className="text-base-content/70">
                                     {tip.description}
                                 </p>
                             </div>

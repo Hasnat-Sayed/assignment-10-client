@@ -3,7 +3,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import { Link } from 'react-router';
 import Loading from '../components/Loading';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const MyListings = () => {
 
@@ -25,16 +25,38 @@ const MyListings = () => {
 
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/delete/${id}`)
-            .then(res => {
-                console.log(res.data);
-                const filterData = myServices.filter(service => service._id != id)
-                setMyServices(filterData)
-                toast.success("Listing Deleted Successfully")
-            })
-            .catch(err => {
-                console.log(err);
-            })
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.delete(`http://localhost:3000/delete/${id}`)
+                    .then(res => {
+                        // console.log(res.data);
+                        if (res.data.deletedCount == 1) {
+                            const filterData = myServices.filter(service => service._id != id)
+                            setMyServices(filterData)
+
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
+        });
+
 
     }
 
@@ -73,13 +95,13 @@ const MyListings = () => {
                                                     </div>
                                                     <div>
                                                         <div className="font-bold">{service?.name}</div>
-                                                        <p className='text-neutral-700'>{service?.description}</p>
+                                                        <p className='text-base-content/60'>{service?.description}</p>
 
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <span className="badge badge-soft badge-neutral font-semibold">{service?.category}</span>
+                                                <span className="badge badge-outline text-base-content/70 badge-neutral font-semibold">{service?.category}</span>
                                             </td>
                                             <td><p>{service?.date}</p></td>
                                             <td><p className='font-bold'>৳{service?.price}</p></td>

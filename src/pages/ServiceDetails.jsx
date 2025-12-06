@@ -86,7 +86,7 @@ const ServiceDetails = () => {
                             <div className='border-b pb-5 border-accent'>
 
                                 <p className='mt-5 text-center md:text-left text-2xl font-semibold text-accent'>
-                                    <span className='text-neutral'>Owners Email: </span>
+                                    <span className='text-base-content'>Owners Email: </span>
                                     {service?.email}
                                 </p>
                             </div>
@@ -114,7 +114,7 @@ const ServiceDetails = () => {
                                 Description
 
                             </p>
-                            <p className='text-center md:text-left text-accent-content font-medium'>{service?.description}</p>
+                            <p className='text-center md:text-left text-base-content/70 font-medium'>{service?.description}</p>
 
                             <div className='flex  justify-center md:justify-start'>
 

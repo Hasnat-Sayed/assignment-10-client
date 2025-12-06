@@ -4,8 +4,8 @@ import { AiOutlinePicture } from 'react-icons/ai';
 import { FiCalendar } from 'react-icons/fi';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
-import { toast } from 'react-toastify';
 import Loading from '../components/Loading';
+import Swal from 'sweetalert2';
 
 const UpdateService = () => {
 
@@ -57,7 +57,11 @@ const UpdateService = () => {
         axios.put(`http://localhost:3000/update/${id}`, formData)
             .then(res => {
                 console.log(res.data);
-                toast.success("Listing Updated")
+                Swal.fire({
+                    title: "Listing Updated Successfully!",
+                    icon: "success",
+                    draggable: true
+                });
                 navigation('/my-services')
             })
             .catch(err => {
